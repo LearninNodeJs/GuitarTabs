@@ -4,8 +4,8 @@
   "description": "Server side for guitar tabs",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon index.js",
-    "test": "node server.js"
+    "start": "nodemon ./src/app.js",
+    "test": "node ./src/app.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,10 @@
   },
   "homepage": "https://github.com/LearninNodeJs/GuitarTabs#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "morgan": "^1.9.0",
     "nodemon": "^1.18.3"
   }
 }
