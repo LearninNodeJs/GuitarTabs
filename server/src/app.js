@@ -5,7 +5,7 @@ const morgan = require('morgan');
 
 const app = express();
 
-app.use(morgan('dev'));
+app.use(morgan('combined'));
 app.use(bodyParser.json());
 app.use(cors());
 
