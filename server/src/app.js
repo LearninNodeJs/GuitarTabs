@@ -4,6 +4,7 @@ const cors = require('cors');
 const morgan = require('morgan');
 const apiRoutes = require('./router/index');
 const app = express();
+const {sequelize} = require('./model');
 
 
 app.use(function(req,res,next){
