@@ -1,6 +1,11 @@
-module.exports = (sequelize,DataTypes) =>{
+/*module.exports = (sequelize,DataTypes) =>{
     sequelize.define('User',{
        email:{type:DataTypes.STRING,unique:true},
-       passsword:{type:DataTypes.STRING}
+       passsword:DataTypes.STRING
     });
-};
+};*/
+module.exports = (sequelize,DataTypes) =>
+    sequelize.define('User',{
+        email:{type:DataTypes.STRING,unique:true},
+        password:DataTypes.STRING
+    })

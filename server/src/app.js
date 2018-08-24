@@ -4,7 +4,6 @@ const cors = require('cors');
 const morgan = require('morgan');
 const apiRoutes = require('./router/index');
 const app = express();
-const {sequelize} = require('./model');
 
 
 app.use(function(req,res,next){
@@ -23,7 +22,6 @@ app.use(morgan('combined'));
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 app.use(cors());
-
 app.use('/user',apiRoutes);
 
 
