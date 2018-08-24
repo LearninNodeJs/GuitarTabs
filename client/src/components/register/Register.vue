@@ -1,16 +1,57 @@
 <template>
-  <div>
-    <h1>Register</h1>
-    <input type="email" name="email" placeholder="email" v-model="email" style="margin-bottom: 6px"/>
-    <br>
-    <input type="password" name="password" placeholder="password" v-model="password"/>
-    <br>
-    <div class="error" v-html="error"/>
-
-    <button style="margin-top: 6px" @click="onClickRegister">Register</button>
-
-   </div>
-
+  <v-container>
+    <v-layout row v-if="error">
+      <v-flex xs12 sm6 offset-sm3>
+        <p class="red--text">{{error}}</p>
+      </v-flex>
+    </v-layout>
+  <v-layout row>
+    <v-flex xs12 sm6 offset-sm3>
+      <v-card>
+        <v-card-title>
+          <h4 class="primary--text">Register</h4>
+        </v-card-title>
+        <v-card-text>
+          <v-container>
+            <form @submit.prevent="onClickRegister">
+              <v-layout row>
+                <v-flex xs12>
+                  <v-text-field
+                    name="email"
+                    label="Email"
+                    id="email"
+                    v-model="email"
+                    type="email"
+                    required
+                    outline></v-text-field>
+                </v-flex>
+              </v-layout>
+              <v-layout row>
+                <v-flex xs12>
+                  <v-text-field
+                    name="password"
+                    label="Password"
+                    id="password"
+                    v-model="password"
+                    type="password"
+                    required
+                    outline></v-text-field>
+                </v-flex>
+              </v-layout>
+              <v-layout row>
+                <v-flex xs12>
+                  <v-btn outline class="primary--text" type="submit">
+                    Sign In
+                  </v-btn>
+                </v-flex>
+              </v-layout>
+            </form>
+          </v-container>
+        </v-card-text>
+      </v-card>
+    </v-flex>
+  </v-layout>
+  </v-container>
 </template>
 <script>
   import AuthenticationService from '@/services/AuthenticationService'
