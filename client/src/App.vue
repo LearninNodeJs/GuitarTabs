@@ -30,8 +30,8 @@ export default {
   computed:{
     menuItems(){
       let menuItems = [
-        {icon:'face',title:'Sign Up',link:'/register'},
-        {icon:'lock_open',title:'Sign In',link:'/signin'}
+        {icon:'face',title:'Sign Up',link:'/signup'},
+        {icon:'lock_open',title:'Sign In',link:'/login'}
       ];
       return menuItems;
     }

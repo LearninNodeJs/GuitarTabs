@@ -15,3 +15,35 @@ exports.register = async function(req,res){
         })
     }
 };
+
+exports.login = async function(req,res){
+    try{
+        const {email,password} = req.body;
+        const user = await User.findOne({
+           where:{
+               email:email
+           }
+        });
+        if(!user){
+            return  res.status(403).json({
+                error:'Provided Information was Incorrect'
+            })
+        }
+        const isPasswordValid = password === user.password;
+        if(!isPasswordValid){
+            return res.status(403).json({
+                error:'Provided Information is not Correct'
+            });
+        }
+
+        res.status(201).json({
+            message:'Authentication was Successful',
+            user
+        });
+
+    }catch (e) {
+        res.status(500).json({
+            error:e.message
+        })
+    }
+};
