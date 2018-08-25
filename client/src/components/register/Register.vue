@@ -2,7 +2,7 @@
   <v-container>
     <v-layout row v-if="error">
       <v-flex xs12 sm6 offset-sm3>
-        <p class="red--text">{{error}}</p>
+        <app-alert :text="error.toString()"></app-alert>
       </v-flex>
     </v-layout>
   <v-layout row>

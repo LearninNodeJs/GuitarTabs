@@ -1,24 +1,22 @@
 <template>
 <v-app>
-  <v-toolbar dark class="primary">
+  <v-toolbar dark class="primary darken-2">
     <v-toolbar-side-icon> </v-toolbar-side-icon>
-    <v-toolbar-title class="white--text">Guitar Tabs</v-toolbar-title>
+    <v-toolbar-title class="white--text">
+      <router-link to="/" tag="span" style="cursor:pointer">Tab Tracker</router-link>
+    </v-toolbar-title>
     <v-spacer></v-spacer>
-    <v-btn icon>
-      <v-icon>search</v-icon>
-    </v-btn>
 
-    <v-btn icon>
-      <v-icon>apps</v-icon>
-    </v-btn>
-
-    <v-btn icon>
-      <v-icon>refresh</v-icon>
-    </v-btn>
-
-    <v-btn icon>
-      <v-icon>more_vert</v-icon>
-    </v-btn>
+    <v-toolbar-items>
+      <v-btn flat
+      v-for="item in menuItems"
+      :key="item.title"
+      router
+      :to="item.link">
+       <v-icon dark left>{{item.icon}}</v-icon>
+        {{item.title}}
+      </v-btn>
+    </v-toolbar-items>
   </v-toolbar>
   <main>
     <router-view></router-view>
@@ -28,7 +26,16 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  computed:{
+    menuItems(){
+      let menuItems = [
+        {icon:'face',title:'Sign Up',link:'/register'},
+        {icon:'lock_open',title:'Sign In',link:'/signin'}
+      ];
+      return menuItems;
+    }
+  }
 }
 </script>
 

@@ -11,7 +11,7 @@ exports.register = async function(req,res){
     }catch (e) {
         console.log(e.message);
         res.status(409).json({
-            error:e.message
+            error:'Email Address is Already in use, Please Try another email'
         })
     }
 };

@@ -6,9 +6,11 @@ import router from './router'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
+import AlertComponent from '@/components/shared/Alert'
 
 Vue.config.productionTip = false
 Vue.use(Vuetify);
+Vue.component('app-alert',AlertComponent);
 
 /* eslint-disable no-new */
 new Vue({
@@ -16,4 +18,4 @@ new Vue({
   router,
   components: { App },
   template: '<App/>'
-})
+});
