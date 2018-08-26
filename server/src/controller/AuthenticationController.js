@@ -1,5 +1,13 @@
 const {User} = require('../model');
+const jwt = require('jsonwebtoken');
+const config = require('../config/config');
 
+function jwtSignUser(user){
+    const ONE_WEEK= 60*60*24*7;
+    return jwt.sign(user,config.authentication.jwtSecret,{
+        expiresIn: ONE_WEEK
+    })
+}
 
 exports.register = async function(req,res){
     try{
@@ -38,7 +46,8 @@ exports.login = async function(req,res){
 
         res.status(201).json({
             message:'Authentication was Successful',
-            user
+            user,
+            token:jwtSignUser(user.toJSON())
         });
 
     }catch (e) {

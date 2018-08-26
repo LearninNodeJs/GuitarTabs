@@ -1,3 +1,4 @@
+require('dotenv').config();
 module.exports = {
     db:{
         database:process.env.DB_NAME || 'tabtracker',
@@ -8,5 +9,8 @@ module.exports = {
             host:process.env.HOST || 'localhost',
             storage:'./tabtracker.sqlite'
         }
+    },
+    authentication:{
+        jwtSecret:process.env.JWT_SECRET || 'secret'
     }
 };
