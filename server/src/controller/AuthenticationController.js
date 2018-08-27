@@ -37,7 +37,7 @@ exports.login = async function(req,res){
                 error:'Provided Information was Incorrect'
             })
         }
-        const isPasswordValid = password === user.password;
+        const isPasswordValid = await user.comparePassword(password);
         if(!isPasswordValid){
             return res.status(403).json({
                 error:'Provided Information is not Correct'

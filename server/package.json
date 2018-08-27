@@ -22,6 +22,8 @@
   },
   "homepage": "https://github.com/LearninNodeJs/GuitarTabs#readme",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "bluebird": "^3.5.1",
     "body-parser": "^1.18.3",
     "cors": "^2.8.4",
     "dotenv": "^6.0.0",
