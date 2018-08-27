@@ -5,7 +5,7 @@ const app = require('./app');
 const server = http.createServer(app);
 const {sequelize}  = require('./model');
 
-sequelize.sync()
+sequelize.sync({force:true})
     .then(()=>{
         server.listen(port,(err)=>{
             if(!err){
