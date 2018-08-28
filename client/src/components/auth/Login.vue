@@ -71,7 +71,7 @@
             password: this.password
           });
         }catch (error) {
-          this.error = error.response.data.error
+          this.error = error.response.data.error;
         }
       }
     }
