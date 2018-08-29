@@ -7,8 +7,9 @@
     </v-toolbar-title>
     <v-spacer></v-spacer>
 
-    <v-toolbar-items>
+    <v-toolbar-items >
       <v-btn flat
+             v-if="$store.state.isUserLoggedIn"
       v-for="item in menuItems"
       :key="item.title"
       router
