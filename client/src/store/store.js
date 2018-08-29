@@ -30,5 +30,10 @@ export default new Vuex.Store({
       setUser({commit},user){
         commit('setUser',user);
       }
+    },
+    getters:{
+      user(state){
+        return state.user;
+      }
     }
 });

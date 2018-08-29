@@ -9,7 +9,7 @@
 
     <v-toolbar-items >
       <v-btn flat
-             v-if="$store.state.isUserLoggedIn"
+             v-if="!userIsAuthenticated"
       v-for="item in menuItems"
       :key="item.title"
       router
@@ -35,6 +35,9 @@ export default {
         {icon:'lock_open',title:'Sign In',link:'/login'}
       ];
       return menuItems;
+    },
+    userIsAuthenticated(){
+      return this.$store.getters.user !== null && this.$store.getters.user !== undefined
     }
   }
 }
