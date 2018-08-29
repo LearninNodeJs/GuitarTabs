@@ -14,7 +14,8 @@ exports.register = async function(req,res){
         const user = await User.create(req.body);
         res.status(201).json({
             message:'User Created Successfully',
-            user
+            user,
+            token:jwtSignUser(user.toJSON())
         })
     }catch (e) {
         console.log(e.message);
@@ -43,7 +44,6 @@ exports.login = async function(req,res){
                     error: 'Provided Information is not Correct'
                 });
             }
-
 
         res.status(201).json({
             message:'Authentication was Successful',
