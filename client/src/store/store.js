@@ -10,6 +10,7 @@ export default new Vuex.Store({
       user:null,
       isUserLoggedIn:false
     },
+
     mutations:{
       setToken(state,token){
         state.token = token;
@@ -24,8 +25,10 @@ export default new Vuex.Store({
       },
       onLogout(state){
         state.user= null;
+        state.token =null;
       }
     },
+
     actions:{
       setToken({commit},token){
         commit('setToken',token);
