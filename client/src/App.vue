@@ -17,6 +17,10 @@
        <v-icon dark left>{{item.icon}}</v-icon>
         {{item.title}}
       </v-btn>
+      <v-btn flat
+             v-if="userIsAuthenticated"
+      router
+      @click="onLogout"><v-icon>exit_to_app</v-icon>Logout</v-btn>
     </v-toolbar-items>
   </v-toolbar>
   <main>
@@ -34,10 +38,17 @@ export default {
         {icon:'face',title:'Sign Up',link:'/signup'},
         {icon:'lock_open',title:'Sign In',link:'/login'}
       ];
+
       return menuItems;
     },
     userIsAuthenticated(){
       return this.$store.getters.user !== null && this.$store.getters.user !== undefined
+    }
+  },
+  methods:{
+    onLogout(){
+      this.$store.dispatch('onLogout');
+      this.$router.push('/login');
     }
   }
 }

@@ -21,6 +21,9 @@ export default new Vuex.Store({
       },
       setUser(state,user){
         state.user=user;
+      },
+      onLogout(state){
+        state.user= null;
       }
     },
     actions:{
@@ -29,6 +32,9 @@ export default new Vuex.Store({
       },
       setUser({commit},user){
         commit('setUser',user);
+      },
+      onLogout({commit}){
+        commit('onLogout');
       }
     },
     getters:{
