@@ -7,6 +7,9 @@
         </v-card-title>
         <v-card-text>
           <v-container>
+            <div v-if="songs.title === null ">
+              No Songs Loaded
+            </div>
             <div v-for="song in songs" :key="song.title">
               {{song.title}}
               {{song.artist}}
@@ -26,17 +29,15 @@
         title:'Songs',
         songs:[
           {
-            title:'Walking in Memphis',
-            artist:'Marc Cohn',
-            album:'Walking in The Rain'
-          },
-          {
-            title:'Coward Of The County',
-            artist:'Kenny Rodgers',
-            album:'Coward Of The County'
+            title:'',
+            artist:'',
+            album:''
           }
         ]
       }
+    },
+    mounted:{
+        //Request rest api for the songs.
     }
   }
 </script>
