@@ -1,19 +1,19 @@
 <template>
 <v-app>
   <v-toolbar dark class="black darken-2">
-    <v-toolbar-side-icon class="hidden-xs-only"> </v-toolbar-side-icon>
+    <v-toolbar-side-icon class="hidden-sm-and-up"> </v-toolbar-side-icon>
     <v-toolbar-title class="white--text">
       <router-link to="/" tag="span" style="cursor:pointer">Tab Tracker</router-link>
     </v-toolbar-title>
 
-    <v-toolbar-items>
+    <v-toolbar-items class="hidden-xs-only">
       <v-btn @click="onNavigateToBrowseeLocation" flat dark><v-icon dark left>open_in_browser</v-icon> Browse</v-btn>
 
     </v-toolbar-items>
 
     <v-spacer></v-spacer>
 
-    <v-toolbar-items >
+    <v-toolbar-items class="hidden-xs-only">
       <v-btn flat
              v-if="!userIsAuthenticated"
       v-for="item in menuItems"
