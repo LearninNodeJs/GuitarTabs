@@ -8,7 +8,7 @@
   <v-layout row>
     <v-flex xs12 sm6 offset-sm3>
       <v-card>
-        <v-card-title>
+        <v-card-title class="black darken-2">
           <h4 class="primary--text">Register</h4>
         </v-card-title>
         <v-card-text>

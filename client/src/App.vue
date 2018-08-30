@@ -1,7 +1,7 @@
 <template>
 <v-app>
   <v-toolbar dark class="black darken-2">
-    <v-toolbar-side-icon> </v-toolbar-side-icon>
+    <v-toolbar-side-icon class="hidden-xs-only"> </v-toolbar-side-icon>
     <v-toolbar-title class="white--text">
       <router-link to="/" tag="span" style="cursor:pointer">Tab Tracker</router-link>
     </v-toolbar-title>

@@ -9,10 +9,12 @@ import 'material-design-icons-iconfont/dist/material-design-icons.css'
 import AlertComponent from '@/components/shared/Alert'
 import {sync} from 'vuex-router-sync'
 import store from  './store/store'
+import CardComponent from '@/components/shared/Card'
 
 Vue.config.productionTip = false
 Vue.use(Vuetify);
 Vue.component('app-alert',AlertComponent);
+Vue.component('card-component',CardComponent);
 
 sync(store,router);
 
