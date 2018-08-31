@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const morgan = require('morgan');
 const apiRoutes = require('./router/index');
+const songRoutes = require('./router/songs');
 const app = express();
 
 
@@ -12,7 +13,7 @@ app.use(function(req,res,next){
         "Origin, X-Requested-With, Content-Type, Accept, Authorization");
 
     if(req.method === "OPTIONS"){
-        res.header('Access-Control-Allow-Methods','PUT,PATCH,POST,DELETE,GET');
+        res.header('Access-Control-Allow-Methods','PUT,PATCH,POST,DELETE, GET');
         return res.status(200).json({});
     }
     next();
@@ -23,6 +24,7 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 app.use(cors());
 app.use('/user',apiRoutes);
+app.use('/songs',songRoutes);
 
 
 app.use((req,res,next)=>{

@@ -7,7 +7,7 @@
         </v-card-title>
         <v-card-text>
           <v-container>
-            <div v-if="songs.title === null ">
+            <div v-if="songs.length<=0">
               No Songs Loaded
             </div>
             <div v-for="song in songs" :key="song.title">
@@ -23,21 +23,18 @@
 </template>
 
 <script>
+  import SongsService from '@/services/SongService'
   export default {
     data(){
       return{
         title:'Songs',
-        songs:[
-          {
-            title:'',
-            artist:'',
-            album:''
-          }
-        ]
+        songs:[]
+
       }
     },
-    mounted:{
+    async  mounted(){
         //Request rest api for the songs.
+      this.songs = await SongsService.index();
     }
   }
 </script>
