@@ -4,6 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import Register from '@/components/auth/Register'
 import Login from '@/components/auth/Login'
 import Songs from '@/components/songs/songs'
+import CreateSong from '@/components/songs/CreateSong'
 Vue.use(Router);
 
 export default new Router({
@@ -27,6 +28,10 @@ export default new Router({
       path:'/songs',
       name: 'Songs',
       component:Songs
+    },{
+      path:'/createSong',
+      name:'CreateSong',
+      component:CreateSong
     }
   ],mode:'history'
 })

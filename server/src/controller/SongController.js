@@ -3,13 +3,14 @@ const {Song} = require('../model');
 
 exports.index = async function(req,res,next){
   try{
-      const song = await Song.findAll({
+      const songs = await Song.findAll({
           limit:10
       });
-      res.status(201).json({
-          message:'Songs in Our Collections',
-          song
-      });
+      /*res.status(201).json({
+          songs
+      });*/
+      res.status(201).send(songs);
+
   }catch (error) {
       res.status(500).json({
          message:'An Error Occured Fetching Songs',

@@ -10,7 +10,7 @@ export default (module) => {
 
     case 'songs':
       return axios.create({
-        baseURL:'http://localhost:3000/songs'
+        baseURL:'http://localhost:3000/songs/'
       });
 
     default:

@@ -3,14 +3,11 @@
     <v-flex xs12 sm6 offset-sm3>
       <v-card>
         <v-card-title class="black darken-2">
-          <h4 class="primary--text" style="cursor: pointer;">{{ title }}</h4>
+          <h4 class="primary--text" style="cursor: pointer;">Songs</h4>
         </v-card-title>
         <v-card-text>
           <v-container>
-            <div v-if="songs.length<=0">
-              No Songs Loaded
-            </div>
-            <div v-for="song in songs" :key="song.title">
+            <div v-for="song in songs" :key="song.id">
               {{song.title}}
               {{song.artist}}
               {{song.album}}
@@ -27,14 +24,13 @@
   export default {
     data(){
       return{
-        title:'Songs',
-        songs:[]
-
+        songs:null
       }
     },
-    async  mounted(){
+    async  mounted () {
         //Request rest api for the songs.
-      this.songs = await SongsService.index();
+      this.songs  = (await SongsService.index()).data;
+      console.log('songs',this.songs)
     }
   }
 </script>
