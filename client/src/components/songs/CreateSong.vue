@@ -113,7 +113,7 @@
               </v-flex>
             </v-layout>
             <div class="text-xs-center mt-3">
-              <v-btn class="black--text" type="submit"outline>Submit Song</v-btn>
+              <v-btn class="black--text" :disabled="!isFormValid" type="submit"outline>Submit Song</v-btn>
             </div>
           </v-card-text>
         </v-card>
@@ -134,6 +134,13 @@
        youtubeId:'',
        lyrics:'',
        tabs:''
+     }
+   },
+   computed:{
+     isFormValid (){
+       return this.title !=='' && this.artist !=='' && this.genre !== '' && this.album !== ''
+                && this.albumImageUrl !== '' && this.youtubeId !== '' && this.lyrics !==''
+                && this.tabs !== ''
      }
    }
  }
