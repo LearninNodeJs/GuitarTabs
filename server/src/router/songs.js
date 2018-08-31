@@ -14,4 +14,6 @@ router.get('/',function(req,res){
     })
 });
 
+router.post('/',SongsController.createSong);
+router.get('/',SongsController.index)
 module.exports = router;
