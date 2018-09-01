@@ -9,7 +9,6 @@
         </v-card-title>
       </v-card>
       <v-card>
-
         <v-container fluid grid-list-lg>
           <v-layout wrap>
             <v-flex xs12  v-for="song in songs" :key="song.title">
@@ -36,10 +35,14 @@
                 </v-layout>
                 <v-divider class="white darken-2"></v-divider>
                 <v-card-actions class="pa-3">
-                  Rate this album
+                  <v-icon>star_border</v-icon>
+                  <v-icon>star_border</v-icon>
+                  <v-icon>star_border</v-icon>
+                  <v-icon>star_border</v-icon>
+                  <v-icon>star_border</v-icon>
                   <v-spacer></v-spacer>
                   <div>
-                    <v-btn flat>
+                    <v-btn flat :to="'/viewSong/'+song.id">
                       <v-icon right>arrow forward</v-icon>
                       View
                     </v-btn>
@@ -53,6 +56,7 @@
     </v-flex>
   </v-layout>
 </template>
+
 
 <script>
   import SongsService from '@/services/SongService'
