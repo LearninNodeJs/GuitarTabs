@@ -14,7 +14,7 @@
             <v-flex xs12  v-for="song in songs" :key="song.title">
               <v-card color="purple darken-2" class="white--text" >
                 <v-layout>
-                  <v-flex xs5>
+                  <v-flex xs12>
                     <img
                       style="padding-left: 5px"
                       :src="song.albumImageUrl"
@@ -23,7 +23,7 @@
                       contain
                     >
                   </v-flex>
-                  <v-flex xs7>
+                  <v-flex xs12>
                     <v-card-title primary-title>
                       <div>
                         <div class="headline">{{song.title}}</div>
@@ -41,12 +41,12 @@
                   <v-icon>star_border</v-icon>
                   <v-icon>star_border</v-icon>
                   <v-spacer></v-spacer>
-                  <div>
+                  <v-flex xs12>
                     <v-btn flat :to="'/viewSong/'+song.id">
                       <v-icon right>arrow forward</v-icon>
                       View
                     </v-btn>
-                  </div>
+                  </v-flex>
                 </v-card-actions>
               </v-card>
             </v-flex>
