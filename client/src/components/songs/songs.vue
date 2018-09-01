@@ -12,7 +12,7 @@
 
         <v-container fluid grid-list-lg>
           <v-layout wrap>
-            <v-flex xs12 v-for="song in songs" :key="song.title">
+            <v-flex xs12  v-for="song in songs" :key="song.title">
               <v-card color="purple darken-2" class="white--text" >
                 <v-layout>
                   <v-flex xs5>
@@ -38,7 +38,12 @@
                 <v-card-actions class="pa-3">
                   Rate this album
                   <v-spacer></v-spacer>
-                  <v-btn >View</v-btn>
+                  <div>
+                    <v-btn flat>
+                      <v-icon right>arrow forward</v-icon>
+                      View
+                    </v-btn>
+                  </div>
                 </v-card-actions>
               </v-card>
             </v-flex>
