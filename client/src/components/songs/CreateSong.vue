@@ -1,5 +1,5 @@
 <template>
-  <v-container grid-list-md >
+  <v-container grid-list-md>
     <v-layout row wrap>
       <v-flex xs4 sm4>
         <v-card >

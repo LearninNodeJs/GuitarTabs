@@ -1,11 +1,11 @@
 <template>
-  <v-layout row style="margin-top: 14px;">
+  <v-layout row style="margin-top: 14px;" >
     <v-flex xs12 sm6 offset-sm3>
       <v-card>
         <v-card-title class="black darken-2">
           <h4 class="primary--text" style="cursor: pointer;">Songs</h4>
           <v-spacer></v-spacer>
-          <v-btn absolute dark small fab  right class="blue" v-if="userIsAuthenticated" @click="onClickToCreate"><v-icon>add</v-icon></v-btn>
+          <v-btn absolute dark small fab  right class="blue darken-2" v-if="userIsAuthenticated" @click="onClickToCreate"><v-icon>add</v-icon></v-btn>
         </v-card-title>
         <v-card-text>
           <v-container>
