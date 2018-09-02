@@ -4,28 +4,28 @@
     <v-flex xs12 sm6>
       <v-card>
         <v-card-title class="black darken-2">
-          <h3 class="primary--text">Intellect</h3>
+          <h3 class="primary--text">Song Metadata</h3>
         </v-card-title>
       </v-card>
     </v-flex>
     <v-flex xs12 sm6>
       <v-card>
         <v-card-title class="black darken-2">
-          <h3 class="primary--text">Intellect</h3>
+          <h3 class="primary--text">Youtube Video</h3>
         </v-card-title>
       </v-card>
     </v-flex>
     <v-flex xs12 sm6>
       <v-card>
         <v-card-title class="black darken-2">
-          <h3 class="primary--text">Intellect</h3>
+          <h3 class="primary--text">Tab</h3>
         </v-card-title>
       </v-card>
     </v-flex>
     <v-flex xs12 sm6>
       <v-card>
         <v-card-title class="black darken-2">
-          <h3 class="primary--text">Intellect</h3>
+          <h3 class="primary--text">Lyrics</h3>
         </v-card-title>
       </v-card>
     </v-flex>
