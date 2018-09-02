@@ -1,5 +1,6 @@
 <template>
-  <v-container grid-list-md>
+  <v-layout>
+  <v-container grid-list-md fluid class="hidden-xs-only">
     <v-layout row wrap>
       <v-flex xs4 sm4>
         <v-card >
@@ -118,9 +119,114 @@
           </v-card-text>
         </v-card>
       </v-flex>
-
     </v-layout>
   </v-container>
+
+    <v-container class="hidden-sm-and-up">
+      <v-layout row>
+        <v-flex xs12 sm6 offset-sm3>
+          <h2 class="secondary--text">Create Song</h2>
+        </v-flex>
+      </v-layout>
+      <v-layout row>
+        <v-flex xs12>
+          <form action="/">
+            <v-layout row>
+              <v-flex xs12 sm6 offset-sm3>
+                <v-text-field
+                  name="title"
+                  label="Enter Title"
+                  v-model="song.title"
+                  required>
+                </v-text-field>
+              </v-flex>
+            </v-layout>
+            <v-layout row>
+              <v-flex xs12 sm6 offset-sm3>
+                <v-text-field
+                  name="artist"
+                  v-model="song.artist"
+                  label="Enter Artist"
+                  required>
+                </v-text-field>
+              </v-flex>
+            </v-layout>
+            <v-layout row>
+              <v-flex xs12 sm6 offset-sm3>
+                <v-text-field
+                  name="genre"
+                  v-model="song.genre"
+                  label="Enter Genre"
+                  required>
+                </v-text-field>
+              </v-flex>
+            </v-layout>
+            <v-layout row>
+              <v-flex xs12 sm6 offset-sm3>
+                <v-text-field
+                  name="album"
+                  v-model="song.album"
+                  label="Enter Album Name"
+                  required>
+                </v-text-field>
+              </v-flex>
+            </v-layout>
+            <v-layout row>
+              <v-flex xs12 sm6 offset-sm3>
+                <v-text-field
+                  name="albumImageUrl"
+                  label="Enter Image Url"
+                  v-model="song.albumImageUrl"
+                  required>
+                </v-text-field>
+              </v-flex>
+            </v-layout>
+            <v-layout row>
+              <v-flex xs12 sm6 offset-sm3>
+                <img :src="song.albumImageUrl" alt="" height="200"/>
+              </v-flex>
+            </v-layout>
+            <v-layout row>
+              <v-flex xs12 sm6 offset-sm3>
+                <v-text-field
+                  name="youtubeId"
+                  v-model="song.youtubeId"
+                  label="Enter Youtube Id"
+                  required>
+                </v-text-field>
+              </v-flex>
+            </v-layout>
+            <v-layout row>
+              <v-flex xs12 sm6 offset-sm3>
+                <v-text-field
+                  name="lyrics"
+                  label="Paste Song Lyrics"
+                  v-model="song.lyrics"
+                  required
+                  multi-line>
+                </v-text-field>
+              </v-flex>
+            </v-layout>
+            <v-layout row>
+              <v-flex xs12 sm6 offset-sm3>
+                <v-text-field
+                  name="tabs"
+                  label="Paste Song Tabs"
+                  v-model="song.tabs"
+                  required
+                  multi-line>
+                </v-text-field>
+              </v-flex>
+            </v-layout>
+
+            <div class="text-xs-center mt-3">
+              <v-btn class="black--text" :disabled="!isFormValid" @click="onCreateNewSong" type="submit"outline>Submit Song</v-btn>
+            </div>
+          </form>
+        </v-flex>
+      </v-layout>
+    </v-container>
+  </v-layout>
 </template>
 <script>
   import songService from '@/services/SongService'
