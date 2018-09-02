@@ -1,7 +1,7 @@
 <template>
 <v-app>
   <v-toolbar dark class="black darken-2">
-    <v-toolbar-side-icon class="hidden-sm-and-up"> </v-toolbar-side-icon>
+    <v-toolbar-side-icon class="hidden-sm-and-up" @click.native="sideNavigation=!sideNavigation"> </v-toolbar-side-icon>
     <v-toolbar-title class="white--text">
       <router-link to="/" tag="span" style="cursor:pointer">Tab Tracker</router-link>
     </v-toolbar-title>
@@ -29,6 +29,11 @@
       @click="onLogout"><v-icon dark left>exit_to_app</v-icon>Logout</v-btn>
     </v-toolbar-items>
   </v-toolbar>
+  <v-navigation-drawer absolute temporary v-model="sideNavigation">
+    <v-list>
+
+    </v-list>
+  </v-navigation-drawer>
   <main>
     <router-view></router-view>
   </main>
@@ -38,6 +43,11 @@
 <script>
 export default {
   name: 'App',
+  data() {
+    return {
+      sideNavigation:false
+    }
+  },
   computed:{
     menuItems(){
       let menuItems = [

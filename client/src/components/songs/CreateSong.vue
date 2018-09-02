@@ -5,7 +5,6 @@
         <v-card >
           <v-card-title class="black darken-2">
             <h4 class="primary--text">Enter Song Information</h4>
-
           </v-card-title>
           <v-card-text>
               <v-layout row>
