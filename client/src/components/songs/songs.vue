@@ -23,7 +23,7 @@
                       contain
                     >
                   </v-flex>
-                  <v-flex xs12>
+                  <v-flex xs12 >
                     <v-card-title primary-title>
                       <div>
                         <div class="headline">{{song.title}}</div>
