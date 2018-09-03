@@ -107,7 +107,7 @@
                   name="tabs"
                   label="Paste Song Tabs"
                   id="tabs"
-                  v-model="song.tabs"
+                  v-model="song.tab"
                   required
                   multi-line>
                 </v-text-field>
@@ -212,7 +212,7 @@
                 <v-text-field
                   name="tabs"
                   label="Paste Song Tabs"
-                  v-model="song.tabs"
+                  v-model="song.tab"
                   required
                   multi-line>
                 </v-text-field>
@@ -242,7 +242,7 @@
          albumImageUrl: '',
          youtubeId: '',
          lyrics: '',
-         tabs: ''
+         tab: ''
        }
      }
    },
