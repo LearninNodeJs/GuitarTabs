@@ -9,6 +9,10 @@ export default {
     },
     getSongById(id){
       return api('songs').get(`/${id}`);
+    },
+    editSongById(song){
+      return api('songs').post(`/${song.id}`,song);
     }
+
 
 }

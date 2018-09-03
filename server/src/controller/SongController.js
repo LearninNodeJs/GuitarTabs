@@ -54,4 +54,24 @@ exports.findSongById = async function (req,res){
         });
     }
 };
+exports.editSongById = async function(req,res){
+    try {
+        const songId = req.params.id;
+        const song = await Song.update(req.body,{
+            where:{
+                id:songId
+            }
+        });
+        res.status(201).send({
+            song:song,
+            message:'Song Successfully Updated'
+        });
+
+    } catch (e) {
+        res.status(500).send({
+            message:'Error Creating Edit Request',
+            error:e.message
+        })
+    }
+};
 

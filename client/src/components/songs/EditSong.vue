@@ -255,7 +255,16 @@
     },
     methods:{
      async OnEditSong(){
-       await console.log('hello Person')
+       try {
+
+         const songId = this.$store.state.route.params.id;
+         const response = await songService.editSongById(this.song);
+         this.$router.push(`/viewSong/${songId}`);
+
+       }catch(e){
+
+         console.log(e.message);
+       }
      }
     },
     async mounted (){
