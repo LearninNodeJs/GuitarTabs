@@ -32,7 +32,17 @@
   </v-layout>
   </v-container>
 </template>
+
 <script>
+  import SongService from '@/services/SongService'
+
+  export default {
+    data(){
+      return {
+        songs:null
+      }
+    }
+  }
 
 </script>
 

@@ -40,6 +40,12 @@ exports.findSongById = async function (req,res){
                 id:id
             }
         });
+        if(song === null){
+           return res.status(404).send({
+               message:'Resource Not Found, Item Does Not Exist'
+            });
+        }
+
         res.status(200).send(song);
     }catch (e) {
         res.status(500).json({
