@@ -8,7 +8,7 @@ export default {
       return api('songs').post('/',song);
     },
     getSongById(id){
-      return api('songs').get('/:id',id);
+      return api('songs').get(`/${id}`);
     }
 
 }

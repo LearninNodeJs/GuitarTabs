@@ -41,6 +41,17 @@
       return {
         songs:null
       }
+    },
+    async mounted (){
+      try {
+        const songId = this.$store.state.route.params.id;
+        console.log(songId)
+        const song = await SongService.getSongById(songId);
+        console.log(song.data);
+
+      }catch (e) {
+        console.log({error:e.message});
+      }
     }
   }
 
