@@ -18,9 +18,6 @@ exports.index = async function(req,res,next){
       });
   }
 };
-
-
-
 exports.createSong = async function(req,res,next){
     try{
         const song = await Song.create(req.body);
@@ -35,3 +32,18 @@ exports.createSong = async function(req,res,next){
         });
     }
 };
+exports.findSongById = async function (req,res){
+    try {
+        const id = req.params.id;
+        const song = await Song.find({
+            where: id
+        });
+        res.status(200).send(song);
+    }catch (e) {
+        res.status(500).json({
+            message:'Error Processing Function',
+            error:e.message
+        });
+    }
+};
+
