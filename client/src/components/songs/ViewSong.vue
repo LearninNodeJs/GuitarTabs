@@ -5,6 +5,10 @@
       <v-card>
         <v-card-title class="black darken-2">
           <h3 class="primary--text">Song Metadata</h3>
+          <v-spacer></v-spacer>
+          <v-btn fab small class="blue darken-2" @click.native="onClickToEdit">
+            <v-icon >edit</v-icon>
+          </v-btn>
         </v-card-title>
         <v-card-media
         :src="songs.albumImageUrl"
@@ -25,9 +29,9 @@
         <v-card-title class="black darken-2" height="290">
           <h3 class="primary--text">Youtube Video</h3>
         </v-card-title>
-        <v-card-media height="290">
+        <v-card-media height="320">
           <v-flex xs12>
-            <youtube :video-id="songs.youtubeId"  player-height="290"></youtube>
+            <youtube :video-id="songs.youtubeId"  player-height="320"></youtube>
           </v-flex>
         </v-card-media>
       </v-card>
@@ -77,6 +81,12 @@
 
       }catch (e) {
         console.log({error:e.message});
+      }
+    },
+    methods:{
+      onClickToEdit () {
+        const songId = this.$store.state.route.params.id;
+        this.$router.push(`/editSong/${songId}`);
       }
     }
   }
