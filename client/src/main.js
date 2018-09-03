@@ -10,9 +10,12 @@ import AlertComponent from '@/components/shared/Alert'
 import {sync} from 'vuex-router-sync'
 import store from  './store/store'
 import CardComponent from '@/components/shared/Card'
+import VueYouTubeEmbed from 'vue-youtube-embed'
+
 
 Vue.config.productionTip = false
 Vue.use(Vuetify);
+Vue.use(VueYouTubeEmbed);
 Vue.component('app-alert',AlertComponent);
 Vue.component('card-component',CardComponent);
 

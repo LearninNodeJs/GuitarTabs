@@ -25,6 +25,9 @@
         <v-card-title class="black darken-2">
           <h3 class="primary--text">Youtube Video</h3>
         </v-card-title>
+        <v-card-media height="290">
+          <youtube :video-id="songs.youtubeId" player-width="490" player-height="290"></youtube>
+        </v-card-media>
       </v-card>
     </v-flex>
     <v-flex xs12 sm6>
@@ -34,7 +37,6 @@
         </v-card-title>
         <v-card-text>
           <v-text-field multi-line  readonly v-model="songs.tab">
-            vuyhjvbj
           </v-text-field>
         </v-card-text>
       </v-card>
@@ -44,6 +46,10 @@
         <v-card-title class="black darken-2">
           <h3 class="primary--text">Lyrics</h3>
         </v-card-title>
+        <v-card-text>
+          <v-text-field multi-line  readonly v-model="songs.lyrics">
+          </v-text-field>
+        </v-card-text>
       </v-card>
     </v-flex>
   </v-layout>
