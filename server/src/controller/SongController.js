@@ -36,7 +36,9 @@ exports.findSongById = async function (req,res){
     try {
         const id = req.params.id;
         const song = await Song.find({
-            where: id
+            where: {
+                id:id
+            }
         });
         res.status(200).send(song);
     }catch (e) {
