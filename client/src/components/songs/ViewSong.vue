@@ -22,11 +22,13 @@
     </v-flex>
     <v-flex xs12 sm6>
       <v-card>
-        <v-card-title class="black darken-2">
+        <v-card-title class="black darken-2" height="290">
           <h3 class="primary--text">Youtube Video</h3>
         </v-card-title>
         <v-card-media height="290">
-          <youtube :video-id="songs.youtubeId" player-width="490" player-height="290"></youtube>
+          <v-flex xs12>
+            <youtube :video-id="songs.youtubeId"  player-height="290"></youtube>
+          </v-flex>
         </v-card-media>
       </v-card>
     </v-flex>
@@ -82,7 +84,5 @@
 </script>
 
 <style scoped>
-textarea{
-  width:80%
-}
+
 </style>
