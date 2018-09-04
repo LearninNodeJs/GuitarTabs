@@ -13,7 +13,7 @@
           <v-layout wrap>
             <v-flex
             xs12>
-              <search-component :searchKey="searchKey"></search-component>
+              <v-text-field outline name="search" label="Search Song" v-model="searchKey"></v-text-field>
             </v-flex>
 
             <v-flex xs12  v-for="song in songs" :key="song.title">
@@ -84,6 +84,25 @@
     methods:{
       onClickToCreate () {
         this.$router.push('/createSong');
+      }
+    },
+    watch:{
+      searchKey(value){
+        const route = {
+          name:'Songs'
+        };
+        if(this.searchKey !==''){
+          route.query ={
+            searchKey:this.searchKey
+          }
+        }
+        this.$router.push(route);
+      },
+      '$route.query.searchKey':{
+          immediate:true,
+          handler(value){
+            this.searchKey = value;
+          }
       }
     }
 
