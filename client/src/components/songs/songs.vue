@@ -34,12 +34,7 @@
                   </v-flex>
                 </v-layout>
                 <v-divider class="white darken-2"></v-divider>
-                <v-card-actions class="pa-3">
-                  <v-icon>star_border</v-icon>
-                  <v-icon>star_border</v-icon>
-                  <v-icon>star_border</v-icon>
-                  <v-icon>star_border</v-icon>
-                  <v-icon>star_border</v-icon>
+                <v-card-actions>
                   <v-spacer></v-spacer>
                   <v-flex xs12>
                     <v-btn flat :to="'/viewSong/'+song.id">
@@ -60,10 +55,12 @@
 
 <script>
   import SongsService from '@/services/SongService'
+
   export default {
     data(){
       return{
-        songs:null
+        songs:null,
+        ratingNumber:3
       }
     },
     async  mounted () {

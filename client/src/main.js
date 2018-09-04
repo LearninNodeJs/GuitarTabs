@@ -19,6 +19,7 @@ Vue.use(VueYouTubeEmbed);
 Vue.component('app-alert',AlertComponent);
 Vue.component('card-component',CardComponent);
 
+
 sync(store,router);
 
 /* eslint-disable no-new */
