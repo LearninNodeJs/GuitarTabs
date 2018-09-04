@@ -3,14 +3,29 @@ const {Song} = require('../model');
 
 exports.index = async function(req,res,next){
   try{
-      const songs = await Song.findAll({
-          limit:10
-      });
-      /*res.status(201).json({
-          songs
-      });*/
-      res.status(201).send(songs);
+      let songs = null
+      const search = req.query.searchKey;
+      if(search){
+          songs = await Song.findAll({
+              where:{
+                  $or:[
+                      'title','album','artist','genre'
+                  ].map(key =>({
+                      [key]:{
+                          $like: `%${search}%`,
 
+                      }
+                  }))
+
+              }
+          })
+      }else {
+           songs = await Song.findAll({
+              limit: 10
+          });
+
+      }
+      res.status(201).send(songs);
   }catch (error) {
       res.status(500).json({
          message:'An Error Occured Fetching Songs',

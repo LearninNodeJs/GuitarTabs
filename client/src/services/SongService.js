@@ -12,6 +12,13 @@ export default {
     },
     editSongById(song){
       return api('songs').post(`/${song.id}`,song);
+    },
+    searchSong(value){
+      return api('songs').get('/',{
+        params:{
+          searchKey:value
+        }
+      })
     }
 
 

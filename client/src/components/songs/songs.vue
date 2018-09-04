@@ -71,11 +71,11 @@
 
       }
     },
-    async  mounted () {
+  /*  async  mounted () {
         //Request rest api for the songs.
       this.songs  = (await SongsService.index()).data;
       console.log('songs',this.songs)
-    },
+    },*/
     computed:{
       userIsAuthenticated(){
         return this.$store.getters.user !== null && this.$store.getters.user !== undefined
@@ -100,8 +100,10 @@
       },
       '$route.query.searchKey':{
           immediate:true,
-          handler(value){
+          async handler(value){
             this.searchKey = value;
+            const response = await SongsService.searchSong(value);
+            this.songs = response.data;
           }
       }
     }
