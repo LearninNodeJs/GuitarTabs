@@ -13,7 +13,7 @@
           <v-layout wrap>
             <v-flex
             xs12>
-              <v-text-field outline name="search" label="Search Song" v-model="searchKey"></v-text-field>
+              <v-text-field outline name="search" label="Search Song by Artist, Genre, Title" v-model="searchKey"></v-text-field>
             </v-flex>
 
             <v-flex xs12  v-for="song in songs" :key="song.title">
@@ -60,7 +60,7 @@
 
 <script>
   import SongsService from '@/services/SongService'
-
+  import _ from 'lodash'
 
   export default {
     data(){
@@ -71,11 +71,6 @@
 
       }
     },
-  /*  async  mounted () {
-        //Request rest api for the songs.
-      this.songs  = (await SongsService.index()).data;
-      console.log('songs',this.songs)
-    },*/
     computed:{
       userIsAuthenticated(){
         return this.$store.getters.user !== null && this.$store.getters.user !== undefined
@@ -87,7 +82,7 @@
       }
     },
     watch:{
-      searchKey(value){
+      searchKey:_.debounce(async function(value){
         const route = {
           name:'Songs'
         };
@@ -97,7 +92,8 @@
           }
         }
         this.$router.push(route);
-      },
+      },700),
+
       '$route.query.searchKey':{
           immediate:true,
           async handler(value){
