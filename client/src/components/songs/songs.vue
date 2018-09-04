@@ -11,6 +11,11 @@
       <v-card>
         <v-container fluid grid-list-lg>
           <v-layout wrap>
+            <v-flex
+            xs12>
+              <search-component :searchKey="searchKey"></search-component>
+            </v-flex>
+
             <v-flex xs12  v-for="song in songs" :key="song.title">
               <v-card color="purple darken-2" class="white--text" >
                 <v-layout>
@@ -56,11 +61,14 @@
 <script>
   import SongsService from '@/services/SongService'
 
+
   export default {
     data(){
       return{
         songs:null,
-        ratingNumber:3
+        ratingNumber:3,
+        searchKey:''
+
       }
     },
     async  mounted () {
