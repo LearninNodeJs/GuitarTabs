@@ -11,11 +11,9 @@
       <v-card>
         <v-container fluid grid-list-lg>
           <v-layout wrap>
-            <v-flex
-            xs12>
+            <v-flex xs12>
               <v-text-field outline name="search" label="Search Song by Artist, Genre, Title" v-model="searchKey"></v-text-field>
             </v-flex>
-
             <v-flex xs12  v-for="song in songs" :key="song.title">
               <v-card color="purple darken-2" class="white--text" >
                 <v-layout>
@@ -68,7 +66,6 @@
         songs:null,
         ratingNumber:3,
         searchKey:''
-
       }
     },
     computed:{
@@ -87,7 +84,7 @@
           name:'Songs'
         };
         if(this.searchKey !==''){
-          route.query ={
+          route.query = {
             searchKey:this.searchKey
           }
         }
