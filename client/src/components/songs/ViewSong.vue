@@ -6,11 +6,12 @@
         <v-card-title class="black darken-2">
           <h3 class="primary--text">Song Metadata</h3>
           <v-spacer></v-spacer>
-
-            <v-chip class="blue darken-2" @click.native.prevent="onClickToBookmark">Bookmark
+          <v-chip class="blue darken-2" @click.native.prevent="onClickToBookmark" v-if="userIsAuthenticated && !songIsBookMarked">UnBookmark
+            <v-icon>bookmark</v-icon></v-chip>
+            <v-chip class="blue darken-2" @click.native.prevent="onClickToBookmark" v-if="userIsAuthenticated && songIsBookMarked">Bookmark
             <v-icon>bookmark</v-icon></v-chip>
 
-          <v-btn fab small class="blue darken-2" @click.native="onClickToEdit">
+          <v-btn fab small class="blue darken-2" @click.native="onClickToEdit" v-if="userIsAuthenticated">
             <v-icon >edit</v-icon>
           </v-btn>
         </v-card-title>
@@ -68,20 +69,24 @@
 
 <script>
   import SongService from '@/services/SongService'
+  import BookmarkService from '@/services/BookmarkService'
 
   export default {
     data(){
       return {
-        songs:{}
+        songs:{},
+        bookmarks:{}
       }
     },
     async mounted (){
       try {
-        const songId = this.$store.state.route.params.id;
-        console.log(songId);
+         const songId = this.$store.state.route.params.id;
          const song = await SongService.getSongById(songId);
+         const userId = this.$store.getters.user.id;
+         const bookMark = await BookmarkService.index(songId,userId);
          this.songs = song.data;
-         console.log(song.data);
+         this.bookmarks = bookMark.data;
+         console.log(bookMark.data)
 
       }catch (e) {
         console.log({error:e.message});
@@ -93,7 +98,22 @@
         this.$router.push(`/editSong/${songId}`);
       },
       onClickToBookmark () {
-        console.log('v-chip works')
+        try{
+          
+        }catch (e) {
+          console.log(e.message);
+        }
+      },
+      onClickToUnBookmark (){
+        
+      }
+    },
+    computed:{
+      userIsAuthenticated(){
+        return this.$store.getters.user !== null && this.$store.getters.user !== undefined
+      },
+      songIsBookMarked(){
+        return this.bookmarks === null
       }
     }
   }
