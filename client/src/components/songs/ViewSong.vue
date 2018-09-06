@@ -6,6 +6,10 @@
         <v-card-title class="black darken-2">
           <h3 class="primary--text">Song Metadata</h3>
           <v-spacer></v-spacer>
+
+            <v-chip class="blue darken-2" @click.native.prevent="onClickToBookmark">Bookmark
+            <v-icon>bookmark</v-icon></v-chip>
+
           <v-btn fab small class="blue darken-2" @click.native="onClickToEdit">
             <v-icon >edit</v-icon>
           </v-btn>
@@ -87,6 +91,9 @@
       onClickToEdit () {
         const songId = this.$store.state.route.params.id;
         this.$router.push(`/editSong/${songId}`);
+      },
+      onClickToBookmark () {
+        console.log('v-chip works')
       }
     }
   }
