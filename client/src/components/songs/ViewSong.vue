@@ -6,7 +6,7 @@
         <v-card-title class="black darken-2">
           <h3 class="primary--text">Song Metadata</h3>
           <v-spacer></v-spacer>
-          <v-chip class="blue darken-2" @click.native.prevent="onClickToBookmark" v-if="userIsAuthenticated && !songIsBookMarked">UnBookmark
+          <v-chip class="blue darken-2" @click.native="onClickToBookmark" v-if="userIsAuthenticated && !songIsBookMarked">UnBookmark
             <v-icon>bookmark</v-icon></v-chip>
             <v-chip class="blue darken-2" @click.native.prevent="onClickToBookmark" v-if="userIsAuthenticated && songIsBookMarked">Bookmark
             <v-icon>bookmark</v-icon></v-chip>
@@ -97,9 +97,15 @@
         const songId = this.$store.state.route.params.id;
         this.$router.push(`/editSong/${songId}`);
       },
-      onClickToBookmark () {
+      async onClickToBookmark () {
         try{
-          
+          const songId = this.$store.state.route.params.id;
+          const userId = this.$store.getters.user.id;
+          const bookmark = {
+            UserId:userId,
+            SongId:songId
+          };
+          await BookmarkService.post(bookmark);
         }catch (e) {
           console.log(e.message);
         }

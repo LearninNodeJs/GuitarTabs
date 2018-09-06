@@ -9,12 +9,9 @@ export default {
       }
     })
   },
-  post(songId,userId){
+  post(bookmark){
       return api('bookmarks').post('/',{
-          params:{
-            songId:songId,
-            userId:userId
-          }
+        params:bookmark
       });
   },
   delete(bookmarkId){

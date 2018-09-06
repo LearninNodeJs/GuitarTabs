@@ -25,14 +25,10 @@ exports.index = async function(req,res){
 };
 exports.addSong = async function(req,res,next){
   try{
-      const songId = req.body.songId;
-      const userId = req.body.userId;
-      const user = await Bookmark.create({
-          SongId:songId,
-          UserId:userId
-      });
+      const bookmark = req.body;
+      const user = await Bookmark.create(bookmark);
       res.status(201).send({
-          message:'User Created',
+          message:'Bookmark Created',
           user
       })
   } catch (e) {
