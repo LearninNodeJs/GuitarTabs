@@ -13,6 +13,11 @@ export default (module) => {
         baseURL:'http://localhost:3000/songs/'
       });
 
+    case 'bookmarks':
+      return axios.create({
+        baseURL:'http://localhost:3000/bookmarks'
+      });
+
     default:
       return axios.create({
         baseURL:'http://localhost:3000/user/'
