@@ -13,7 +13,8 @@ exports.index = async function(req,res){
       });
       if(bookmark===null || bookmark === undefined){
           return res.send({
-            message:'There are No Existing Bookmarks of the Requested user for the Song'
+            message:'There are No Existing Bookmarks of the Requested user for the Song',
+            bookmarkOnStore:null
           })
       }
       res.status(201).send(bookmark);

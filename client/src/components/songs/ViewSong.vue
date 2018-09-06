@@ -113,7 +113,7 @@
         return this.$store.getters.user !== null && this.$store.getters.user !== undefined
       },
       songIsBookMarked(){
-        return this.bookmarks === null
+        return this.bookmarks.bookmarkOnStore === null
       }
     }
   }
