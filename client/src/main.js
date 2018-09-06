@@ -11,14 +11,12 @@ import {sync} from 'vuex-router-sync'
 import store from  './store/store'
 import CardComponent from '@/components/shared/Card'
 import VueYouTubeEmbed from 'vue-youtube-embed'
-import SearchComponent from '@/components/songs/utils/Search'
 
 Vue.config.productionTip = false
 Vue.use(Vuetify);
 Vue.use(VueYouTubeEmbed);
 Vue.component('app-alert',AlertComponent);
 Vue.component('card-component',CardComponent);
-Vue.component('search-component',SearchComponent);
 
 
 sync(store,router);
