@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const morgan = require('morgan');
 const apiRoutes = require('./router/index');
+const bookmarkRoutes = require('./router/bookmarks');
 const songRoutes = require('./router/songs');
 const app = express();
 
@@ -25,6 +26,7 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use('/user',apiRoutes);
 app.use('/songs',songRoutes);
+app.use('/bookmarks',bookmarkRoutes);
 
 
 app.use((req,res,next)=>{
