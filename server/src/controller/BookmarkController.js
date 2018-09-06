@@ -4,14 +4,16 @@ exports.index = async function(req,res){
   try {
       let songs = null;
       const songId = req.query.songId;
+      const userId = req.query.userId;
       const bookmark = await Bookmark.findOne({
           where:{
-              SongId:songId
+              SongId:songId,
+              userId:userId
           }
       });
       if(bookmark===null || bookmark === undefined){
           return res.status(404).send({
-            message:'There are No Existing Bookmarks for the Song'
+            message:'There are No Existing Bookmarks of the Requested user for the Song'
           })
       }
       res.status(201).send(bookmark);
