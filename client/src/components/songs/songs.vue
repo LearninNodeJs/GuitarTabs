@@ -19,6 +19,7 @@
               <v-text-field outline name="search" label="Search Song by Artist, Genre, Title" v-model="searchKey"></v-text-field>
             </v-flex>
             <v-flex xs12  v-for="song in songs" :key="song.title" style="margin-bottom: 12px">
+
               <v-card>
                 <v-layout row wrap>
                   <v-flex xs12>
@@ -42,6 +43,7 @@
                   </v-flex>
                 </v-layout>
               </v-card>
+
             </v-flex>
           </v-layout>
         </v-container>
