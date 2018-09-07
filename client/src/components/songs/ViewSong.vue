@@ -104,6 +104,7 @@
             SongId:this.$store.state.route.params.id,
             UserId:this.$store.getters.user.id
           });
+          this.$store.dispatch('onSetBookMark',this.bookmarks);
         }catch (e) {
           console.log(e.message);
         }
@@ -113,6 +114,7 @@
           console.log(this.bookmarks.id);
           const bookmarkId = this.bookmarks.id;
           await BookmarkService.delete(bookmarkId);
+          this.$store.dispatch('unsetBookmark');
         }catch(e){
           console.log(e.message);
         }

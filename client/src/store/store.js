@@ -34,8 +34,16 @@ export default new Vuex.Store({
         state.user= null;
         state.token =null;
       },
-      setBookMarked(state){
-        state.isBookmarked= true;
+      setBookMarked(state,payload){
+        if(payload.length>0){
+          state.isBookmarked= true;
+        }else{
+          state.isBookmarked = false;
+        }
+
+      },
+      unsetBookmark(state){
+        state.isBookmarked=false;
       }
     },
 
@@ -51,11 +59,18 @@ export default new Vuex.Store({
       },
       onSetBookMark({commit}){
         commit('setBookMarked');
+      },
+      unsetBookmark({commit}){
+        commit('unsetBookmark');
       }
+
     },
     getters:{
       user(state){
         return state.user;
+      },
+      bookmark(state){
+        return state.isBookmarked;
       }
     }
 });

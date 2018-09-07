@@ -250,7 +250,7 @@
      isFormValid (){
        return this.song.title !=='' && this.song.artist !=='' && this.song.genre !== '' && this.song.album !== ''
                 && this.song.albumImageUrl !== '' && this.song.youtubeId !== '' && this.song.lyrics !==''
-                && this.song.tabs !== ''
+                && this.song.tab !== ''
      }
    },
    methods:{
