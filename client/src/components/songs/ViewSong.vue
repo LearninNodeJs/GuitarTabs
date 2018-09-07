@@ -78,6 +78,7 @@
         bookmarks:{}
       }
     },
+
     async mounted (){
       try {
          const songId = this.$store.state.route.params.id;
