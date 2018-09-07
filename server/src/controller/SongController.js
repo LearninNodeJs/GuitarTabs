@@ -77,15 +77,15 @@ exports.editSongById = async function(req,res){
             }
         });
         res.status(201).send({
-            song:song,
-            message:'Song Successfully Updated'
+            song
         });
 
     } catch (e) {
         res.status(500).send({
             message:'Error Creating Edit Request',
             error:e.message
-        })
+        });
+        console.log(e.message);
     }
 };
 

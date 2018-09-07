@@ -99,13 +99,10 @@
       },
       async onClickToBookmark () {
         try{
-          const songId = this.$store.state.route.params.id;
-          const userId = this.$store.getters.user.id;
-          const bookmark = {
-            UserId:userId,
-            SongId:songId
-          };
-          await BookmarkService.post(bookmark);
+          await BookmarkService.post({
+            SongId:this.$store.state.route.params.id,
+            UserId:this.$store.getters.user.id
+          });
         }catch (e) {
           console.log(e.message);
         }
