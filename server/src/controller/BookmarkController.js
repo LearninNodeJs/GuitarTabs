@@ -35,3 +35,23 @@ exports.addSong = async function(req,res,next){
       console.log(e.message);
   }
 };
+exports.deleteBookmark = async function(req,res){
+    try{
+        const {bookmarkId} = req.params;
+        const bookmark = await Bookmark.findById(bookmarkId);
+
+        if(bookmark===null || bookmark === undefined){
+            return res.status(404).send({
+                message:'BookMark Does Not Exist'
+            })
+        }
+        await bookmark.destroy();
+        res.status(201).send(bookmark)
+    } catch (e) {
+        console.log(e.message);
+        res.status(500).send({
+            message:'Internal Server Error',
+            error:e.message
+        });
+    }
+};

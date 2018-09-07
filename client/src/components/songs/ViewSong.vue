@@ -6,9 +6,9 @@
         <v-card-title class="black darken-2">
           <h3 class="primary--text">Song Metadata</h3>
           <v-spacer></v-spacer>
-          <v-chip class="blue darken-2" @click.native="onClickToBookmark" v-if="userIsAuthenticated && !songIsBookMarked">UnBookmark
+          <v-chip class="blue darken-2" @click.native="onClickToUnBookmark" v-if="userIsAuthenticated && !songIsBookMarked">UnBookmark
             <v-icon>bookmark</v-icon></v-chip>
-            <v-chip class="blue darken-2" @click.native.prevent="onClickToBookmark" v-if="userIsAuthenticated && songIsBookMarked">Bookmark
+            <v-chip class="blue darken-2" @click.native="onClickToBookmark" v-if="userIsAuthenticated && songIsBookMarked">Bookmark
             <v-icon>bookmark</v-icon></v-chip>
 
           <v-btn fab small class="blue darken-2" @click.native="onClickToEdit" v-if="userIsAuthenticated">
@@ -108,7 +108,11 @@
         }
       },
       onClickToUnBookmark (){
-        
+        try{
+
+        }catch(e){
+          console.log(e.message);
+        }
       }
     },
     computed:{

@@ -9,7 +9,8 @@ export default new Vuex.Store({
       token:null,
       user:null,
       isUserLoggedIn:false,
-      error:null
+      error:null,
+      isBookmarked:false
     },
 
     mutations:{
@@ -27,6 +28,9 @@ export default new Vuex.Store({
       onLogout(state){
         state.user= null;
         state.token =null;
+      },
+      setBookMarked(state){
+        state.isBookmarked= true;
       }
     },
 
@@ -39,6 +43,9 @@ export default new Vuex.Store({
       },
       onLogout({commit}){
         commit('onLogout');
+      },
+      onSetBookMark({commit}){
+        commit('setBookMarked');
       }
     },
     getters:{
