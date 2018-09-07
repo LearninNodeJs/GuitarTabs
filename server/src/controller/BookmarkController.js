@@ -25,8 +25,20 @@ exports.index = async function(req,res){
 };
 exports.addSong = async function(req,res,next){
   try{
-      const bookmark = req.body;
-      const user = await Bookmark.create(bookmark);
+      const {SongId,UserId} = req.body;
+      const bookmark = await Bookmark.findOne({
+          where:{
+              SongId: SongId,
+              UserId: UserId
+          }
+      });
+      if(bookmark){
+          return res.status(409).send({
+              message:'Conflict, Bookmark Already Exists'
+          })
+      }
+      const user = await Bookmark.create(req.body);
+
       res.status(201).send({
           message:'Bookmark Created',
           user

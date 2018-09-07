@@ -107,9 +107,11 @@
           console.log(e.message);
         }
       },
-      onClickToUnBookmark (){
+      async onClickToUnBookmark (){
         try{
-
+          console.log(this.bookmarks.id);
+          const bookmarkId = this.bookmarks.id;
+          await BookmarkService.delete(bookmarkId);
         }catch(e){
           console.log(e.message);
         }

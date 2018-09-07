@@ -1,10 +1,15 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import createPersistedState from 'vuex-persistedstate';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-    strict:true,//Modifying a state only through an action or a mutation.
+    strict:true,
+    plugins:[
+      createPersistedState()
+    ],
+  //Modifying a state only through an action or a mutation.
     state:{
       token:null,
       user:null,
