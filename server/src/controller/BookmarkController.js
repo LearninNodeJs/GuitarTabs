@@ -1,9 +1,10 @@
-const {Bookmark} = require('../model');
+const {Bookmark,Song} = require('../model');
+const _ = require('lodash');
 
 exports.index = async function(req,res){
   try {
       let songs = null;
-      const songId = req.query.songId;
+      const songId = req.query.songId;6
       const userId = req.query.userId;
       const bookmark = await Bookmark.findOne({
           where:{
@@ -23,22 +24,34 @@ exports.index = async function(req,res){
       console.log(e.message);
   }
 };
+
 exports.indexByUser = async function(req,res){
     try {
         let songs = null;
         const userId = req.query.userId;
-        const bookmark = await Bookmark.findAll({
+        const bookmarks = await Bookmark.findAll({
             where:{
                 UserId:userId
-            }
-        });
-        if(bookmark===null || bookmark === undefined){
+            },
+            include:[
+                {
+                    model:Song
+                }
+            ]
+        }).map(bookmark => bookmark.toJSON())
+            .map(bookmark => _.extend(
+                {},
+                bookmark.Song,
+                bookmark
+            ));
+
+        if(bookmarks===null || bookmarks === undefined){
             return res.send({
                 message:'There are No Existing Bookmarks of the Requested user for the Song',
                 bookmarkOnStore:null
             })
         }
-        res.status(201).send(bookmark);
+        res.status(201).send(bookmarks);
     }  catch (e) {
         res.status(500).json({error:e.message});
         console.log(e.message);
