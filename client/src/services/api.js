@@ -5,25 +5,25 @@ export default (module) => {
   switch(module){
     case 'user':
       return axios.create({
-        baseURL:'http://localhost:3000/user/'
+        baseURL:'https://guitarserver.herokuapp.com/user/'
       });
 
     case 'songs':
       return axios.create({
-        baseURL:'http://localhost:3000/songs/'
+        baseURL:'https://guitarserver.herokuapp.com/songs/'
       });
 
     case 'bookmarks':
       return axios.create({
-        baseURL:'http://localhost:3000/bookmarks'
+        baseURL:'https://guitarserver.herokuapp.com/bookmarks'
       });
     case 'history':
       return axios.create({
-        baseURL:'http://localhost:3000/history'
-      })
+        baseURL:'https://guitarserver.herokuapp.com/history'
+      });
     default:
       return axios.create({
-        baseURL:'http://localhost:3000/user/'
+        baseURL:'https://guitarserver.herokuapp.com/user/'
       });
   }
 };

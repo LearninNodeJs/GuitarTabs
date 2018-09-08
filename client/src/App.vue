@@ -3,7 +3,7 @@
   <v-toolbar dark class="black darken-2">
     <v-toolbar-side-icon class="hidden-sm-and-up" @click.native="sideNavigation=!sideNavigation"> </v-toolbar-side-icon>
     <v-toolbar-title class="white--text">
-      <router-link to="/" tag="span" style="cursor:pointer">Tab Tracker</router-link>
+      <router-link to="/login" tag="span" style="cursor:pointer">Tab Tracker</router-link>
     </v-toolbar-title>
 
     <v-toolbar-items class="hidden-xs-only">
