@@ -87,16 +87,16 @@
           <v-spacer></v-spacer>
         </v-card-title>
         <v-data-table
-          :headers="headers"
-          :items="bookmarks"
-          :search="search">
+          :headers="historyHeaders"
+          :items="songHistory"
+          :search="searchHistory">
           <template slot="items" slot-scope="props">
             <td>{{ props.item.id }}</td>
             <td class="text-xs-right">{{ props.item.title }}</td>
             <td class="text-xs-right">{{ props.item.artist }}</td>
           </template>
           <v-alert slot="no-results" :value="true" color="error" icon="warning">
-            Your search for "{{ search }}" found no results.
+            Your search for "{{ searchHistory }}" found no results.
           </v-alert>
         </v-data-table>
       </v-card>
@@ -109,6 +109,7 @@
   import SongsService from '@/services/SongService'
   import _ from 'lodash'
   import BookmarkService from "../../services/BookmarkService";
+  import SongHistoryService from "../../services/SongHistoryService";
   export default {
     data(){
       return{
@@ -116,6 +117,7 @@
         ratingNumber:3,
         searchKey:'',
         search:'',
+        searchHistory:'',
         headers: [
           {
             text: 'Bookmarks',
@@ -135,6 +137,26 @@
 
           }
           ],
+        historyHeaders:[
+          {
+            text:'Recently Viewed',
+            align:'left',
+            sortable:false,
+            value:'id'
+          },
+          {text:'Title',value:'title'},
+          {text:'Artist',value:'artist'}
+        ],
+        songHistory: [
+          {
+            value: false,
+            id: '',
+            title: '',
+            artist: '',
+
+          }
+        ],
+
       }
     },
     computed:{
@@ -174,7 +196,9 @@
         const songId = this.$store.state.route.params.id;
         const userId = this.$store.getters.user.id;
           this.bookmarks = (await BookmarkService.indexByUser(userId)).data;
+          this.songHistory = (await SongHistoryService.index(userId)).data;
           console.log(this.bookmarks);
+
       }
     }
 

@@ -70,6 +70,7 @@
 <script>
   import SongService from '@/services/SongService'
   import BookmarkService from '@/services/BookmarkService'
+  import SongHistoryService from '@/services/SongHistoryService'
 
   export default {
     data(){
@@ -87,7 +88,14 @@
          const bookMark = await BookmarkService.index(songId,userId);
          this.songs = song.data;
          this.bookmarks = bookMark.data;
-         console.log(bookMark.data)
+         console.log(bookMark.data);
+
+         if(this.userIsAuthenticated){
+           SongHistoryService.post({
+             SongId:songId,
+             UserId:userId
+           })
+         }
 
       }catch (e) {
         console.log({error:e.message});
