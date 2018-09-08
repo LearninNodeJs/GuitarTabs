@@ -17,7 +17,10 @@ export default (module) => {
       return axios.create({
         baseURL:'http://localhost:3000/bookmarks'
       });
-
+    case 'history':
+      return axios.create({
+        baseURL:'http://localhost:3000/history'
+      })
     default:
       return axios.create({
         baseURL:'http://localhost:3000/user/'

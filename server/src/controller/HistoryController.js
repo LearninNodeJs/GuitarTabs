@@ -1,25 +1,29 @@
-const {History,Song,User} = require('../model');
+const {History,Song} = require('../model');
 const _ = require('lodash');
 
 exports.index = async function(req,res){
     try {
         const userId = req.query.userId;
-        const recentlyViewed = History.findAll({
-            where:{
-                UserId:userId
+        const histories = await History.findAll({
+            where: {
+                UserId: userId
             },
-            include:[
+            include: [
                 {
-                    model:Song
+                    model: Song
                 }
+            ],
+            order: [
+                ['createdAt', 'DESC']
             ]
-        }).map(history => history.toJSON())
+        })
+            .map(history => history.toJSON())
             .map(history => _.extend(
                 {},
                 history.Song,
                 history
-            ));
-        res.status(201).send(recentlyViewed);
+            ))
+        res.status(201).send(_.uniqBy(histories, history => history.SongId))
 
     }catch (e) {
         res.status(500).send({

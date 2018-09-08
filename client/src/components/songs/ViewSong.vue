@@ -92,8 +92,8 @@
 
          if(this.userIsAuthenticated){
            SongHistoryService.post({
-             SongId:songId,
-             UserId:userId
+             songId:songId,
+             userId:userId
            })
          }
 
