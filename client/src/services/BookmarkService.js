@@ -9,6 +9,13 @@ export default {
       }
     })
   },
+  indexByUser(userId){
+    return api('bookmarks').get('/byUser/',{
+      params:{
+        userId:userId
+      }
+    })
+  },
   post(bookmark){
       return api('bookmarks').post('/',bookmark);
   },

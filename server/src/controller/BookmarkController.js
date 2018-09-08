@@ -8,7 +8,7 @@ exports.index = async function(req,res){
       const bookmark = await Bookmark.findOne({
           where:{
               SongId:songId,
-              userId:userId
+              UserId:userId
           }
       });
       if(bookmark===null || bookmark === undefined){
@@ -22,6 +22,27 @@ exports.index = async function(req,res){
       res.status(500).json({error:e.message});
       console.log(e.message);
   }
+};
+exports.indexByUser = async function(req,res){
+    try {
+        let songs = null;
+        const userId = req.query.userId;
+        const bookmark = await Bookmark.findAll({
+            where:{
+                UserId:userId
+            }
+        });
+        if(bookmark===null || bookmark === undefined){
+            return res.send({
+                message:'There are No Existing Bookmarks of the Requested user for the Song',
+                bookmarkOnStore:null
+            })
+        }
+        res.status(201).send(bookmark);
+    }  catch (e) {
+        res.status(500).json({error:e.message});
+        console.log(e.message);
+    }
 };
 exports.addSong = async function(req,res,next){
   try{

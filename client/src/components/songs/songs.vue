@@ -2,8 +2,41 @@
   <v-container grid-list-md fluid>
   <v-layout row wrap>
     <v-flex xs12 sm6>
+      <v-card>
+        <v-card-title class="black darken-2">
+          <h4 class="primary--text">Bookmarks</h4>
+        </v-card-title>
+      </v-card>
+      <v-card>
+        <v-container fluid grid-list-lg>
+          <v-layout row wrap>
+            <v-spacer></v-spacer>
+            <v-flex xs6>
+              <v-text-field append-icon="search" name="search" label="Search Bookmark" v-model="search"></v-text-field>
+            </v-flex>
+          </v-layout>
+          <v-layout row wrap>
+            <v-flex xs12>
+              <v-data-table
+              :headers="headers"
+              :items="bookmarks"
+              :search="search">
+                <template slot="items" slot-scope="props">
+                  <td>{{ props.item.name }}</td>
+                  <td class="text-xs-right">{{ props.item.title }}</td>
+                  <td class="text-xs-right">{{ props.item.artist }}</td>
+                </template>
+                <v-alert slot="no-results" :value="true" color="error" icon="warning">
+                  Your search for "{{ search }}" found no results.
+                </v-alert>
+              </v-data-table>
+            </v-flex>
+          </v-layout>
+        </v-container>
+      </v-card>
 
     </v-flex>
+
     <v-flex xs12 sm6>
       <v-card>
         <v-card-title class="black darken-2">
@@ -16,10 +49,9 @@
         <v-container fluid grid-list-lg>
           <v-layout wrap>
             <v-flex xs12>
-              <v-text-field outline name="search" label="Search Song by Artist, Genre, Title" v-model="searchKey"></v-text-field>
+              <v-text-field outline name="search" append-icon="search" label="Search Song by Artist, Genre, Title" v-model="searchKey"></v-text-field>
             </v-flex>
             <v-flex xs12  v-for="song in songs" :key="song.title" style="margin-bottom: 12px">
-
               <v-card>
                 <v-layout row wrap>
                   <v-flex xs12>
@@ -43,7 +75,6 @@
                   </v-flex>
                 </v-layout>
               </v-card>
-
             </v-flex>
           </v-layout>
         </v-container>
@@ -57,13 +88,40 @@
 <script>
   import SongsService from '@/services/SongService'
   import _ from 'lodash'
-
+  import BookmarkService from "../../services/BookmarkService";
   export default {
     data(){
       return{
         songs:null,
         ratingNumber:3,
-        searchKey:''
+        searchKey:'',
+        search:'',
+        headers: [
+          {
+            text: 'Bookmarks',
+            align: 'left',
+            sortable: false,
+            value: 'name'
+          },
+          { text: 'Title', value: 'title' },
+          { text: 'Artist', value: 'artist' },
+        ],
+        bookmarks: [
+          {
+            value: false,
+            name: 'Big Ol Red',
+            title: 'Artists of Then & Now',
+            artist: 'Dolly Parton etc',
+
+          },
+          {
+            value: false,
+            name: 'Country',
+            title: 'Artists of Then & Now',
+            artist: 'Dolly Parton etc',
+
+          },
+          ],
       }
     },
     computed:{
@@ -96,6 +154,14 @@
             const response = await SongsService.searchSong(value);
             this.songs = response.data;
           }
+      }
+    },
+    async mounted (){
+      if(this.userIsAuthenticated){
+        const songId = this.$store.state.route.params.id;
+        const userId = this.$store.getters.user.id;
+          this.bookmarks = (await BookmarkService.indexByUser(userId)).data;
+          console.log(this.bookmarks);
       }
     }
 
