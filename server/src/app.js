@@ -29,6 +29,7 @@ app.use('/user',apiRoutes);
 app.use('/songs',songRoutes);
 app.use('/bookmarks',bookmarkRoutes);
 app.use('/history',historyRoutes);
+require('./config/passport')
 
 
 app.use((req,res,next)=>{
