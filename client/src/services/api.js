@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import store from '@/store/store'
 export default (module) => {
 
   switch(module){
@@ -15,7 +15,10 @@ export default (module) => {
 
     case 'bookmarks':
       return axios.create({
-        baseURL:'https://guitarserver.herokuapp.com/bookmarks'
+        baseURL:'https://guitarserver.herokuapp.com/bookmarks',
+        headers: {
+          Authorization:`Bearer ${store.state.token}`
+        }
       });
     case 'history':
       return axios.create({

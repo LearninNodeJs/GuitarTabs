@@ -4,7 +4,7 @@ const _ = require('lodash');
 exports.index = async function(req,res){
   try {
       let songs = null;
-      const songId = req.query.songId;6
+      const songId = req.query.songId;
       const userId = req.query.userId;
       const bookmark = await Bookmark.findOne({
           where:{

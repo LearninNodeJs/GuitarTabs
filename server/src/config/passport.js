@@ -7,8 +7,8 @@ const config = require('./config');
 
 passport.use(
     new JwtStrategy({
-        _jwtFromRequest :ExtractJwt.fromAuthHeaderAsBearerToken(),
-        _secretOrKeyProvider:config.authentication.jwtSecret
+        jwtFromRequest :ExtractJwt.fromAuthHeaderAsBearerToken(),
+        secretOrKey:config.authentication.jwtSecret
     },async function(jwtPayload,done){
         try{
             const user = await User.findOne({
