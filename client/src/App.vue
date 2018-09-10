@@ -31,6 +31,23 @@
   </v-toolbar>
   <v-navigation-drawer absolute temporary v-model="sideNavigation">
     <v-list>
+      <v-list-tile v-if="!userIsAuthenticated"
+      v-for="item in menuItems"
+      :key="item.title"
+      router
+      :to="item.link">
+       <v-list-tile-action>
+         <v-icon>{{item.icon}}</v-icon>
+       </v-list-tile-action>
+        <v-list-tile-content>{{item.title}}</v-list-tile-content>
+      </v-list-tile>
+
+      <v-list-tile v-if="userIsAuthenticated" router to="/songs">
+        <v-list-tile-action>
+          <v-icon>open_in_browser</v-icon>
+        </v-list-tile-action>
+        <v-list-tile-content>Browse</v-list-tile-content>
+      </v-list-tile>
 
     </v-list>
   </v-navigation-drawer>
@@ -41,8 +58,10 @@
 </template>
 
 <script>
+import VListTileAction from "vuetify/src/components/VList/VListTileAction";
 export default {
   name: 'App',
+  components: {VListTileAction},
   data() {
     return {
       sideNavigation:false
