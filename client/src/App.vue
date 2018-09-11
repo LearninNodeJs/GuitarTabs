@@ -58,10 +58,8 @@
 </template>
 
 <script>
-import VListTileAction from "vuetify/src/components/VList/VListTileAction";
 export default {
   name: 'App',
-  components: {VListTileAction},
   data() {
     return {
       sideNavigation:false

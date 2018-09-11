@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "firebase": "^5.4.2",
     "lodash": "^4.17.10",
     "material-design-icons-iconfont": "^3.0.3",
     "stylus": "^0.54.5",
