@@ -12,6 +12,7 @@ import store from  './store/store'
 import CardComponent from '@/components/shared/Card'
 import VueYouTubeEmbed from 'vue-youtube-embed'
 import SnackBar from '@/components/shared/SnackBar'
+import * as firebase from 'firebase'
 
 Vue.config.productionTip = false
 Vue.use(Vuetify);
@@ -28,6 +29,16 @@ new Vue({
   el: '#app',
   router,
   store,
+  created(){
+    firebase.initializeApp({
+      apiKey: process.env.apiKey,
+      authDomain: process.env.authDomain,
+      databaseURL: process.env.databaseURL,
+      projectId: process.env.projectId,
+      storageBucket: process.env.storageBucket,
+      messagingSenderId: process.env.messagingSenderId
+    })
+  },
   components: { App },
   template: '<App/>'
 });
