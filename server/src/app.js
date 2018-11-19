@@ -7,6 +7,7 @@ const bookmarkRoutes = require('./router/bookmarks');
 const songRoutes = require('./router/songs');
 const historyRoutes = require('./router/history');
 const app = express();
+require('dotenv').config();
 
 
 app.use(function(req,res,next){
